@@ -39,7 +39,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
-    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age)  {
         String s = "INSERT INTO newtable (name, lastname, age) VALUES (?, ?, ?)";
         try (Connection connection = Util.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(s)) {
@@ -54,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
-    public void removeUserById(long id) throws SQLException {
+    public void removeUserById(long id)  {
         String s = "DELETE FROM newtable WHERE id = ?";
         try (Connection connection = Util.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(s)) {
@@ -66,7 +66,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers()  {
         String s = "SELECT * FROM newtable";
         List<User> users = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class UserDaoJDBCImpl implements UserDao {
         return users;
     }
 
-    public void cleanUsersTable() throws SQLException {
+    public void cleanUsersTable()   {
         String s = "DELETE FROM newtable";
         try (Connection connection = Util.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(s)) {
